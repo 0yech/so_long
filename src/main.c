@@ -6,11 +6,10 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:01:13 by cheyo             #+#    #+#             */
-/*   Updated: 2024/11/26 15:53:21 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/02 13:00:14 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "so_long.h"
 
 int close_window(void *param)
@@ -21,30 +20,22 @@ int close_window(void *param)
 
 int main(int argc, char *argv[])
 {
-    t_data	data;
-	t_image	img;
+    t_game	game;
 
 	if (!openmap(argc, argv))
 		return (1);
-    data.mlx = mlx_init();
-	if (!data.mlx)
+	if (!load_map(argc, argv, &game))
+		return (0);
+    game.mlx = mlx_init();
+	if (!game.mlx)
 		return (1);
-	data.win = mlx_new_window(data.mlx, 1920, 1080, "Hello MiniLibX!");
-	img.img = mlx_new_image(data.mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_length, &img.endian);
-	if (!data.win)
+	game.win = mlx_new_window(game.mlx, 800, 600, "Hello MiniLibX!");
+	if (!game.win)
 		return (2);
-	int f;
-
-	f = 0;
-	while (f < 1000)
-	{
-		my_mlx_pixel_put(&img, f, f, 0x00FF0000);
-		f++;
-	}
-	mlx_put_image_to_window(data.mlx, data.win, img.img, 0, 0);
-    mlx_hook(data.win, 17, 0, close_window, NULL); // Fermer la fenêtre avec la croix
-    mlx_loop(data.mlx);
+	load_textures(&game);
+	draw_grid(&game);
+    mlx_hook(game.win, 17, 0, close_window, NULL);
+    mlx_loop(game.mlx);
     return (0);
 }
 

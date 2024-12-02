@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:02:16 by cheyo             #+#    #+#             */
-/*   Updated: 2024/11/26 11:20:05 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/11/30 19:57:19 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,38 @@
 
 # include "libft.h"
 # include "ft_printf.h"
+# include "mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef struct s_data
+typedef struct s_textures
 {
-	void	*mlx;
-	void	*win;
-} t_data;
+	void	*wall;
+	void	*player;
+	void	*collectible;
+	void	*floor;
+	void	*exit;
+} t_textures;
 
-typedef struct s_image
+typedef struct s_game
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
-} t_image;
-
-typedef struct s_map
-{
-	char	**grid;
-	int		collectables;
-	int		pos_px;
-	int		pos_py;
-	int		ec;
-	int		pc;	
-} t_map;
+	void		*mlx;
+	void		*win;
+	t_textures	textures;
+	char		**grid;
+	int			tile_size;
+} t_game;
 
 int		openmap(int argc, char **argv);
 
-void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
+int		load_map(int argc, char **argv, t_game *game);
+
+void	free_grid(char **grid);
+int		count_lines(int fd);
+
+void	load_textures(t_game *game);
+
+void draw_grid(t_game *game);
 
 char	*gnl_strjoin(char *s1, char *s2);
 char	*gnl_strchr(const char *s, int c);
