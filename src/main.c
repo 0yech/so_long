@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     game.mlx = mlx_init();
 	if (!game.mlx)
 		return (1);
-	game.win = mlx_new_window(game.mlx, 800, 600, "Hello MiniLibX!");
+	game.win = mlx_new_window(game.mlx, 832, 704, "so_long");
 	if (!game.win)
 		return (2);
 	load_textures(&game);
