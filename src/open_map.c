@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:46:30 by cheyo             #+#    #+#             */
-/*   Updated: 2024/11/29 20:28:41 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/06 02:46:05 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,5 @@ int	openmap(int argc, char **argv)
 		return (0);
 	}
 	close(fd);
-	return (1); // Returns 1 if parsed
+	return (1);
 }

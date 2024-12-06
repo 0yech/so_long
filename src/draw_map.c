@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:41:51 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/02 12:58:32 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:04:22 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void draw_grid(t_game *game)
             if (image_to_draw)
             {
                 mlx_put_image_to_window(game->mlx, game->win, image_to_draw, draw_x, draw_y);
-                ft_printf("print [%c] à (%d, %d)\n", game->grid[y][x], draw_x, draw_y);
+                //ft_printf("print [%c] à (%d, %d)\n", game->grid[y][x], draw_x, draw_y);
             }
             x++;
         }

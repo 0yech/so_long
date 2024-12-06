@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:01:13 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/02 13:00:14 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/05 22:39:20 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,30 @@ int main(int argc, char *argv[])
 		return (1);
 	if (!load_map(argc, argv, &game))
 		return (0);
+	if (!ffxsize(&game))
+		return (0);
     game.mlx = mlx_init();
 	if (!game.mlx)
+	{
+		free_grid(game.grid);
 		return (1);
-	game.win = mlx_new_window(game.mlx, 832, 704, "so_long");
+	}
+	game.win = mlx_new_window(game.mlx, game.len * 64, game.hei * 64, "so_long");
 	if (!game.win)
-		return (2);
+	{
+		free_grid(game.grid);
+		mlx_destroy_display(game.mlx);
+		free(game.mlx);
+		return (1);
+	}
 	load_textures(&game);
 	draw_grid(&game);
     mlx_hook(game.win, 17, 0, close_window, NULL);
+	ft_printf("x position for player : %d\n", game.pxpos);
+	ft_printf("y position for player : %d\n", game.pypos);
+	mlx_hook(game.win, 2, 1L << 0, keyhook, &game);
     mlx_loop(game.mlx);
+	free_grid(game.grid);
     return (0);
 }
 

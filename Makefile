@@ -13,11 +13,12 @@ SRCS = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/get_next_line.c \
 	$(SRC_DIR)/get_next_line_utils.c \
 	$(SRC_DIR)/open_map.c \
-	$(SRC_DIR)/utils.c \
 	$(SRC_DIR)/init_grid.c \
 	$(SRC_DIR)/texture_handler.c \
 	$(SRC_DIR)/draw_map.c \
-
+	$(SRC_DIR)/map_utils.c \
+	$(SRC_DIR)/check_utils.c \
+	$(SRC_DIR)/movement.c \
 	
 OBJS = $(SRCS:.c=.o)
 
