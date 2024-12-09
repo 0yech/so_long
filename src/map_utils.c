@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 20:02:57 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/05 18:50:52 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/09 01:44:28 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	getxpos(char **grid, char c)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -35,8 +35,8 @@ int	getxpos(char **grid, char c)
 
 int	getypos(char **grid, char c)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;

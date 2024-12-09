@@ -6,15 +6,15 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:41:53 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/05 22:01:53 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/09 00:34:21 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void move_up(int keycode, t_game *game)
+void	move_up(int keycode, t_game *game)
 {
-	t_game *cpy;
+	t_game	*cpy;
 
 	cpy = game;
 	if (keycode == 119)
@@ -34,9 +34,9 @@ void move_up(int keycode, t_game *game)
 	}
 }
 
-void move_down(int keycode, t_game *game)
+void	move_down(int keycode, t_game *game)
 {
-	t_game *cpy;
+	t_game	*cpy;
 
 	cpy = game;
 	if (keycode == 115)
@@ -56,9 +56,9 @@ void move_down(int keycode, t_game *game)
 	}
 }
 
-void move_left(int keycode, t_game *game)
+void	move_left(int keycode, t_game *game)
 {
-	t_game *cpy;
+	t_game	*cpy;
 
 	cpy = game;
 	if (keycode == 97)
@@ -78,9 +78,9 @@ void move_left(int keycode, t_game *game)
 	}
 }
 
-void move_right(int keycode, t_game *game)
+void	move_right(int keycode, t_game *game)
 {
-	t_game *cpy;
+	t_game	*cpy;
 
 	cpy = game;
 	if (keycode == 100)

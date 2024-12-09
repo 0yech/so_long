@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:46:30 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/06 02:46:05 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/09 00:51:06 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_grid(char **grid)
 	int	i;
 
 	if (!grid)
-		return;
+		return ;
 	i = 0;
 	while (grid[i])
 	{
@@ -37,7 +37,7 @@ int	count_lines(int fd)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		lines++;
 		free(line);
 	}
@@ -46,8 +46,8 @@ int	count_lines(int fd)
 
 int	validchar(char **grid)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (grid[i])
@@ -55,9 +55,9 @@ int	validchar(char **grid)
 		j = 0;
 		while (grid[i][j])
 		{
-			if (!(grid[i][j] == '1' || grid[i][j] == '0' || 
-				  grid[i][j] == 'C' || grid[i][j] == 'P' || 
-				  grid[i][j] == 'E' || grid[i][j] == '\n'))
+			if (!(grid[i][j] == '1' || grid[i][j] == '0' ||
+				grid[i][j] == 'C' || grid[i][j] == 'P' ||
+				grid[i][j] == 'E' || grid[i][j] == '\n'))
 			{
 				ft_printf("yob");
 				return (0);
@@ -134,8 +134,8 @@ int	parsemap(int fd, int lines)
 
 int	openmap(int argc, char **argv)
 {
-	int fd;
-	int lines;
+	int	fd;
+	int	lines;
 
 	if (argc < 2 || argc > 2)
 	{

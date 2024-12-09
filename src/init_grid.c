@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:29:14 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/06 02:45:31 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/09 00:44:36 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	fill_grid(t_game *game, int fd, int lines)
 
 int	checkep(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -64,7 +64,7 @@ int	checkep(t_game *game)
 			if (game->grid[i][j] == 'E')
 				game->ce++;
 			else if (game->grid[i][j] == 'P')
-				game->cp++;		
+				game->cp++;
 			else if (game->grid[i][j] == 'C')
 				game->cc++;
 			j++;
@@ -78,8 +78,8 @@ int	checkep(t_game *game)
 
 int	map_size(t_game *game)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 	int	nexlen;
 
 	i = 0;
@@ -96,8 +96,8 @@ int	map_size(t_game *game)
 		i++;
 	}
 	len = ft_strlen(game->grid[0]);
-    if (game->grid[0][len - 1] == '\n')
-        len--;
+	if (game->grid[0][len - 1] == '\n')
+		len--;
 	game->len = len;
 	game->hei = i + 1;
 	return (1);
@@ -105,8 +105,8 @@ int	map_size(t_game *game)
 
 int	load_map(int argc, char **argv, t_game *game)
 {
-	int fd;
-	int lines;
+	int	fd;
+	int	lines;
 
 	fd = open(argv[1], O_RDONLY);
 	lines = count_lines(fd);

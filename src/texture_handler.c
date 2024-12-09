@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 17:40:28 by cheyo             #+#    #+#             */
-/*   Updated: 2024/11/30 20:00:09 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/09 03:24:50 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_textures(t_game *game)
 		mlx_destroy_image(game->mlx, game->textures.exit);
 	if (game->textures.player)
 		mlx_destroy_image(game->mlx, game->textures.player);
-
 }
 
 void	load_textures(t_game *game)
@@ -42,12 +41,12 @@ void	load_textures(t_game *game)
 			"textures/exit.xpm", &img_width, &img_height);
 	game->textures.player = mlx_xpm_file_to_image(game->mlx,
 			"textures/player.xpm", &img_width, &img_height);
-	if (!game->textures.floor || !game->textures.wall ||
-		!game->textures.collectible || !game->textures.exit ||
-		!game->textures.player)
-		{
-			ft_printf("coup dur les textures.");
-			free_textures(game);
-			exit(1);
-		}
+	if (!game->textures.floor || !game->textures.wall
+		|| !game->textures.collectible || !game->textures.exit
+		|| !game->textures.player)
+	{
+		ft_printf("coup dur les textures.");
+		free_textures(game);
+		exit(1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:31:27 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/05 22:58:04 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/09 03:26:26 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	countcoins(char **grid)
 {
-	int x;
-	int y;
-	int c;
+	int	x;
+	int	y;
+	int	c;
 
 	x = 0;
 	y = 0;
@@ -35,52 +35,50 @@ int	countcoins(char **grid)
 	return (c);
 }
 
-void refill(t_game *game, int x, int y)
+void	refill(t_game *game, int x, int y)
 {
-    if (!game->grid[y] || !game->grid[y][x]
-        || (game->grid[y][x] != 'F' && game->grid[y][x] != 'T'
+	if (!game->grid[y] || !game->grid[y][x]
+		|| (game->grid[y][x] != 'F' && game->grid[y][x] != 'T'
 		&& game->grid[y][x] != 'E'))
-        return;
-    if (game->grid[y][x] == 'T')
-        game->grid[y][x] = 'C';
-    else if (game->grid[y][x] == 'F' || game->grid[y][x] == 'E')
-        game->grid[y][x] = '0';
-    refill(game, x + 1, y);
-    refill(game, x - 1, y);
-    refill(game, x, y + 1);
-    refill(game, x, y - 1);
+		return ;
+	if (game->grid[y][x] == 'T')
+		game->grid[y][x] = 'C';
+	else if (game->grid[y][x] == 'F' || game->grid[y][x] == 'E')
+		game->grid[y][x] = '0';
+	refill(game, x + 1, y);
+	refill(game, x - 1, y);
+	refill(game, x, y + 1);
+	refill(game, x, y - 1);
 }
 
-
-void fill(t_game *game, int x, int y)
+void	fill(t_game *game, int x, int y)
 {
-    if (!game->grid[y] || !game->grid[y][x]
-        || (game->grid[y][x] != '0' && game->grid[y][x] != 'E'
-        && game->grid[y][x] != 'C' && game->grid[y][x] != 'P'))
-        return;
-    if (game->grid[y][x] == 'E')
+	if (!game->grid[y] || !game->grid[y][x]
+		|| (game->grid[y][x] != '0' && game->grid[y][x] != 'E'
+		&& game->grid[y][x] != 'C' && game->grid[y][x] != 'P'))
+		return ;
+	if (game->grid[y][x] == 'E')
 	{
 		game->grid[y][x] == '0';
-        game->vise++;
+		game->vise++;
 	}
-    else if (game->grid[y][x] == 'C')
-    {
-        game->visc++;
-        game->grid[y][x] = 'T';
-    }
-    else
-        game->grid[y][x] = 'F';
-    fill(game, x + 1, y);
-    fill(game, x - 1, y);
-    fill(game, x, y + 1);
-    fill(game, x, y - 1);
+	else if (game->grid[y][x] == 'C')
+	{
+		game->visc++;
+		game->grid[y][x] = 'T';
+	}
+	else
+		game->grid[y][x] = 'F';
+	fill(game, x + 1, y);
+	fill(game, x - 1, y);
+	fill(game, x, y + 1);
+	fill(game, x, y - 1);
 }
-
 
 int	ffxsize(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = getxpos(game->grid, 'P');
 	y = getypos(game->grid, 'P');
