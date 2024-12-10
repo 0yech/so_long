@@ -6,34 +6,42 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:41:51 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/09 04:00:20 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 01:20:50 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	*get_texture(char tile, t_textures *textures)
+{
+	if (tile == '1')
+		return (textures->wall);
+	else if (tile == 'P')
+		return (textures->player);
+	else if (tile == 'C')
+		return (textures->collectible);
+	else if (tile == 'E')
+		return (textures->exit);
+	else if (tile == '0')
+		return (textures->floor);
+	return (NULL);
+}
+
 void	draw_grid(t_game *game)
 {
-	int	y;
+	int		y;
+	int		x;
+	void	*image_to_draw;
 
 	y = 0;
 	game->tile_size = 64;
+	image_to_draw = NULL;
 	while (game->grid[y])
 	{
-		int	x = 0;
+		x = 0;
 		while (game->grid[y][x])
 		{
-			void	*image_to_draw = NULL;
-			if (game->grid[y][x] == '1')
-				image_to_draw = game->textures.wall;
-			else if (game->grid[y][x] == 'P')
-				image_to_draw = game->textures.player;
-			else if (game->grid[y][x] == 'C')
-				image_to_draw = game->textures.collectible;
-			else if (game->grid[y][x] == 'E')
-				image_to_draw = game->textures.exit;
-			else if (game->grid[y][x] == '0')
-				image_to_draw = game->textures.floor;
+			image_to_draw = get_texture(game->grid[y][x], &game->textures);
 			if (image_to_draw)
 				mlx_put_image_to_window(game->mlx, game->win, image_to_draw,
 					x * game->tile_size, y * game->tile_size);

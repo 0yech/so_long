@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:46:30 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/09 00:51:06 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 00:25:40 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,67 +44,6 @@ int	count_lines(int fd)
 	return (lines);
 }
 
-int	validchar(char **grid)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (grid[i])
-	{
-		j = 0;
-		while (grid[i][j])
-		{
-			if (!(grid[i][j] == '1' || grid[i][j] == '0' ||
-				grid[i][j] == 'C' || grid[i][j] == 'P' ||
-				grid[i][j] == 'E' || grid[i][j] == '\n'))
-			{
-				ft_printf("yob");
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	gridcontent(char **grid)
-{
-	int	i;
-	int	j;
-	int	last_row;
-
-	i = 0;
-	last_row = 0;
-	while (grid[last_row])
-		last_row++;
-	last_row--;
-	j = 0;
-	while (grid[0][j] && grid[last_row][j])
-	{
-		if (grid[0][j] != '1' || grid[last_row][j] != '1')
-		{
-			ft_printf("err1");
-			return (0);
-		}
-		j++;
-	}
-	i = 1;
-	while (i < last_row)
-	{
-		if (grid[i][0] != '1' || grid[i][j - 1] != '1')
-		{
-			ft_printf("err2");
-			return (0);
-		}
-		i++;
-	}
-	if (!validchar(grid))
-		return (0);
-	return (1);
-}
-
 int	parsemap(int fd, int lines)
 {
 	char	**grid;
@@ -132,6 +71,26 @@ int	parsemap(int fd, int lines)
 	return (1);
 }
 
+int	process_file(char **argv, int lines)
+{
+	int	fd;
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf("File couldn't be read");
+		return (0);
+	}
+	if (!parsemap(fd, lines))
+	{
+		close(fd);
+		ft_printf("Failed to parse map");
+		return (0);
+	}
+	close(fd);
+	return (1);
+}
+
 int	openmap(int argc, char **argv)
 {
 	int	fd;
@@ -149,19 +108,8 @@ int	openmap(int argc, char **argv)
 		ft_printf("Map too small");
 		return (0);
 	}
-	close(fd);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		ft_printf("File couldn't be read");
+	if (!process_file(argv, lines))
 		return (0);
-	}
-	if (!parsemap(fd, lines))
-	{
-		close(fd);
-		ft_printf("Failed to parse map");
-		return (0);
-	}
 	close(fd);
 	return (1);
 }

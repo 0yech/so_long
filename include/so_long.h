@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:02:16 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/08 23:40:40 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 00:53:55 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int		load_map(int argc, char **argv, t_game *game);
 void	free_grid(char **grid);
 int		count_lines(int fd);
 
-int		checkep(t_game *game);
-
 void	load_textures(t_game *game);
 
 void	draw_grid(t_game *game);
@@ -83,5 +81,11 @@ int		keyhook(int keycode, t_game *game);
 /*check_utils.c*/
 int		countcoins(char **grid);
 int		ffxsize(t_game *game);
+
+/* map_checks.c */
+int		gridcontent(char **grid);
+
+/* count_checks.c */
+int		checkep(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:01:13 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/09 03:58:11 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 00:45:21 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,8 @@ int	close_window(void *param)
 	exit(0);
 }
 
-int	main(int argc, char *argv[])
+int	game_call(t_game game)
 {
-	t_game	game;
-
-	if (!openmap(argc, argv))
-		return (1);
-	if (!load_map(argc, argv, &game))
-		return (1);
-	if (!ffxsize(&game))
-		return (1);
 	game.mlx = mlx_init();
 	if (!game.mlx)
 	{
@@ -46,11 +38,24 @@ int	main(int argc, char *argv[])
 	load_textures(&game);
 	draw_grid(&game);
 	mlx_hook(game.win, 17, 0, close_window, NULL);
-	ft_printf("x position for player : %d\n", game.pxpos);
-	ft_printf("y position for player : %d\n", game.pypos);
 	mlx_hook(game.win, 2, 1L << 0, keyhook, &game);
 	mlx_loop(game.mlx);
 	free_grid(game.grid);
+	return (0);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_game	game;
+
+	if (!openmap(argc, argv))
+		return (1);
+	if (!load_map(argc, argv, &game))
+		return (1);
+	if (!ffxsize(&game))
+		return (1);
+	if (game_call(game))
+		return (2);
 	return (0);
 }
 

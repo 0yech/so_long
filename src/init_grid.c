@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:29:14 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/09 00:44:36 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 00:54:20 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,36 +43,6 @@ int	fill_grid(t_game *game, int fd, int lines)
 		i++;
 	}
 	game->grid[i] = NULL;
-	return (1);
-}
-
-int	checkep(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	game->cc = 0;
-	game->ce = 0;
-	game->cp = 0;
-	while (game->grid[i])
-	{
-		j = 0;
-		while (game->grid[i][j])
-		{
-			if (game->grid[i][j] == 'E')
-				game->ce++;
-			else if (game->grid[i][j] == 'P')
-				game->cp++;
-			else if (game->grid[i][j] == 'C')
-				game->cc++;
-			j++;
-		}
-		i++;
-	}
-	if (game->ce != 1 || game->cp != 1 || game->cc < 1)
-		return (0);
 	return (1);
 }
 

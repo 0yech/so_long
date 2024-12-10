@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:41:53 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/09 00:34:21 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 01:22:30 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	move_right(int keycode, t_game *game)
 
 int	keyhook(int keycode, t_game *game)
 {
-	//ft_printf("Coins left %d\n", game->coins);
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(game->mlx, game->win);
@@ -121,8 +120,9 @@ int	keyhook(int keycode, t_game *game)
 	game->grid[getypos(game->grid, 'P')][getxpos(game->grid, 'P')] = '0';
 	game->grid[game->pypos][game->pxpos] = 'P';
 	ft_printf("Nb moves %d\n", game->moves);
-	//ft_printf("new pos [%d, %d]\n", game->pxpos, game->pypos);
 	mlx_clear_window(game->mlx, game->win);
 	draw_grid(game);
 	return (0);
 }
+	//ft_printf("new pos [%d, %d]\n", game->pxpos, game->pypos);
+	//ft_printf("Coins left %d\n", game->coins);

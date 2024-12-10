@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:31:27 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/09 03:26:26 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/10 01:22:55 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ int	ffxsize(t_game *game)
 	if (!checkep(game))
 		return (0);
 	fill(game, x, y);
-	//ft_printf("vise : %d\n", game->vise);
-	//ft_printf("visc : %d\n", game->visc);
 	if (game->visc != game->coins || game->vise < 1)
 	{
 		free_grid(game->grid);
@@ -97,3 +95,6 @@ int	ffxsize(t_game *game)
 	game->grid[game->pypos][game->pxpos] = 'P';
 	return (1);
 }
+	//ft_printf("vise : %d\n", game->vise);
+	//ft_printf("visc : %d\n", game->visc);
+	// ^ Visited exit(s) and coins upon floodfill
