@@ -21,8 +21,6 @@ SRCS = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/movement.c \
 	$(SRC_DIR)/map_checks.c \
 	$(SRC_DIR)/count_checks.c \
-
-
 	
 OBJS = $(SRCS:.c=.o)
 

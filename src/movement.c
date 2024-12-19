@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:41:53 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/10 01:22:30 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/13 02:07:52 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ void	move_up(int keycode, t_game *game)
 				game->coins--;
 			game->pypos -= 1;
 			game->moves++;
+			game->textures.player = game->textures.pu;
 			if (game->pxpos == game->expos && game->pypos == game->eypos
 				&& game->coins == 0)
 				exit(0);
 		}
+		else if (cpy->grid[cpy->pypos - 1][cpy->pxpos] == 'Z')
+			exit(0);
 	}
 }
 
@@ -49,10 +52,13 @@ void	move_down(int keycode, t_game *game)
 				game->coins--;
 			game->pypos += 1;
 			game->moves++;
+			game->textures.player = game->textures.pd;
 			if (game->pxpos == game->expos && game->pypos == game->eypos
 				&& game->coins == 0)
 				exit(0);
 		}
+		else if (cpy->grid[cpy->pypos + 1][cpy->pxpos] == 'Z')
+			exit(0);
 	}
 }
 
@@ -71,10 +77,13 @@ void	move_left(int keycode, t_game *game)
 				game->coins--;
 			game->pxpos -= 1;
 			game->moves++;
+			game->textures.player = game->textures.pl;
 			if (game->pxpos == game->expos && game->pypos == game->eypos
 				&& game->coins == 0)
 				exit(0);
 		}
+		else if (cpy->grid[cpy->pypos][cpy->pxpos - 1] == 'Z')
+			exit(0);
 	}
 }
 
@@ -93,10 +102,13 @@ void	move_right(int keycode, t_game *game)
 				game->coins--;
 			game->pxpos += 1;
 			game->moves++;
+			game->textures.player = game->textures.pr;
 			if (game->pxpos == game->expos && game->pypos == game->eypos
 				&& game->coins == 0)
 				exit(0);
 		}
+		else if (cpy->grid[cpy->pypos][cpy->pxpos + 1] == 'Z')
+			exit(0);
 	}
 }
 

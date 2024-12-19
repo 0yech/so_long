@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:11:06 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/10 00:26:10 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/13 01:45:11 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	validchar(char **grid)
 		{
 			if (!(grid[i][j] == '1' || grid[i][j] == '0' ||
 				grid[i][j] == 'C' || grid[i][j] == 'P' ||
+				grid[i][j] == 'Z' ||
 				grid[i][j] == 'E' || grid[i][j] == '\n'))
 			{
 				ft_printf("yob");

@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:41:51 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/10 01:20:50 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/13 02:38:05 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	*get_texture(char tile, t_textures *textures)
 		return (textures->exit);
 	else if (tile == '0')
 		return (textures->floor);
+	else if (tile == 'Z')
+		return (textures->enemy);
 	return (NULL);
 }
 
@@ -32,8 +34,10 @@ void	draw_grid(t_game *game)
 	int		y;
 	int		x;
 	void	*image_to_draw;
+	char	*strmov;
 
 	y = 0;
+	strmov = ft_itoa(game->moves);
 	game->tile_size = 64;
 	image_to_draw = NULL;
 	while (game->grid[y])
@@ -49,4 +53,7 @@ void	draw_grid(t_game *game)
 		}
 		y++;
 	}
+	mlx_string_put(game->mlx, game->win, 80, 80, 0xFFFFFF,
+		strmov);
+	free(strmov);
 }

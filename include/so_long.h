@@ -6,7 +6,7 @@
 /*   By: cheyo <cheyo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:02:16 by cheyo             #+#    #+#             */
-/*   Updated: 2024/12/10 00:53:55 by cheyo            ###   ########.fr       */
+/*   Updated: 2024/12/13 02:06:43 by cheyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ typedef struct s_textures
 	void	*collectible;
 	void	*floor;
 	void	*exit;
+	void	*enemy;
+	void	*pl;
+	void	*pr;
+	void	*pu;
+	void	*pd;
 }	t_textures;
 
 typedef struct s_game
@@ -52,6 +57,8 @@ typedef struct s_game
 	int			cc;
 	int			len;
 	int			hei;
+	int			tilehei;
+	int			tilewit;
 }	t_game;
 
 int		openmap(int argc, char **argv);
