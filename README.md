@@ -1,48 +1,19 @@
 ![image](https://github.com/user-attachments/assets/94e4623d-3937-405a-a29d-4ba0c27c78d6)
-# so_long - Making a 2D Game
+# GameboySQ - 42's BSQ running on Gameboy.
 
-so_long is one of 42's first project including graphics (Rank02). It's about making a 2D game, run around collecting coins and reach the exit. You have some freedom on how the project works, but you'll need to use rectangular maps as .ber files.
+GameboySQ is a replica of the BSQ (Biggest square) project. It's the hardest team project during the Piscine. I failed at it back then and didn't want to give up there, so i made it run on limited hardware.
 
-## My Game
-It's a tiny "Hedgehog" from the game Elsword, running around collecting pies. My version also includes holes, it means you can lose the game if you run into them.
+## BSQ Comparaison
 
-https://github.com/user-attachments/assets/6cb93625-3659-4864-9e83-e9a0edd5138e
-## What you'll learn
+| GameboySQ                   | Original BSQ                  |
+|-----------------------------|-------------------------------|
+| ![gbsqdemo](https://github.com/user-attachments/assets/c478ffc2-fb09-4b9a-9208-344f59b785d8) | <img src="https://github.com/user-attachments/assets/41271dec-25f8-4cc3-831a-2a88eb60eaad" align="right" width="250"/> |
 
-With so_long, you'll most likely learn about the following (as in the 42 cursus)
+## GBDK & Resources
 
-- Structs, pointers to structs and how to use them
-- The concept of floodfill, useful for games
-- Working with external libraries more efficiently
-- Problem solving with the project's game and map rules
+I would recommend trying out making projects on Gameboy to start homebrews. It works surprisingly well, has plenty of tools available and remains very simple if you can write some C.
 
-## Authorized external functions and tools
+[GBDK](https://gbdk-2020.github.io/gbdk-2020/docs/api/docs_supported_consoles.html) is an amazing library which lets you make games or programs on a few game systems such as NES and GB. You can write programs with a mix of C and Assembly. It's a perfect entry point for people who want to try out making homebrews.
 
-- ```open, close, read, write, malloc, free, perror, strerror, exit```
-- ```Any tool from MiniLibX```
-- ```ft_printf or any self made code```
+[PanDocs](https://gbdev.io/pandocs/) is a documentation filled with Gameboy technical information.
 
-**MiniLibX**
-
-MiniLibX is a mini version of the LibX library. LibX allows for interactions with an "X Server", LibX is a Window System protocol that will act as a client with the X server, enabling the use of the X Protocol. It allows for features such as opening displays, work with geometry or even communicate with keyboard inputs and events. 
-
-The MiniLibX is very small version of the LibX client. Within this project, there's only a few use for the library.
-
-- Opening a window
-- Converting and storing XPM files to pointers
-- Listen for Events/Keyboard inputs
-- Printing pixels
-
-## Norm
-
-42 projects are written under the [Norm V4](https://cdn.intra.42.fr/pdf/pdf/96987/en.norm.pdf)
-
-42's Norm most notorious rules (just to name a few) implies things such as :
-
-- No ```for``` loops.
-- Max 25 lines per function.
-- Max of one declaration or assignation per line.
-- Strict indentation and formatting.
-- No extra external functions or libraries.
-- No Ternary operators.
-- And many more.
